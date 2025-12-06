@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Cazador de Esferas VR</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.1/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.1/examples/jsm/"
+      }
+    }
+    </script>
+  </head>
+  <body>
+    <div id="overlay">
+      <div class="content">
+        <h1>Cazador de Esferas VR</h1>
+        <p class="subtitle">Experiencia inmersiva en WebGL + Three.js</p>
+        
+        <div class="instructions">
+          <h3>Instrucciones:</h3>
+          <ul>
+            <li>Utiliza el <b>Joystick</b> izquierdo/derecho para moverte.</li>
+            <li>Apunta con tu control y presiona el <b>Gatillo</b> para disparar.</li>
+            <li>Destruye las esferas para ganar puntos (+1).</li>
+            <li>No puedes salir de los límites del bosque.</li>
+          </ul>
+        </div>
+
+        <div class="team">
+          <h3>Integrantes del Equipo:</h3>
+          <p>Monroy Martinez Rodrigo</p>
+        </div>
+
+        <button id="startButton">INGRESAR AL JUEGO</button>
+      </div>
+    </div>
+
+    <div id="hud" style="display: none;">
+      <div class="badge"><span>Puntaje:</span> <b id="score">0</b></div>
+    </div>
+
+    <audio id="ambient" src="assets/audio/forest_night.mp3" preload="auto" loop></audio>
+
+    <canvas id="scene"></canvas>
+    <script type="module" src="main.js"></script>
+    
+    <script>
+      const btn = document.getElementById('startButton');
+      const overlay = document.getElementById('overlay');
+      const hud = document.getElementById('hud');
+      
+      btn.addEventListener('click', () => {
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+          overlay.style.display = 'none';
+          hud.style.display = 'grid'; // Mostrar HUD
+        }, 500);
+      });
+    </script>
+  </body>
+</html>
